@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { Joueur } from './joueur/joueur';
+import { Produit } from './produit/produit';
 @Component({
   selector: 'app-root',
-  imports: [Joueur],
+  imports: [Produit],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

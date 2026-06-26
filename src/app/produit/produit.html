@@ -1,0 +1,21 @@
+<button type="submit" class="btn btn-primary" (click)="openModal()">+</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Catégorie</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (produit of produits; track produit.id) {
+      <tr>
+        <th scope="row">{{ produit.id }}</th>
+        <td>{{ produit.nom }}</td>
+        <td>{{ produit.prix }}</td>
+        <td>{{ produit.categorie }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
