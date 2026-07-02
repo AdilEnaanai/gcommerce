@@ -1,26 +1,23 @@
 <div id="form">
   <h2>Ajouter un produit</h2>
-  <form>
+  <form [formGroup]="produitForm" (ngSubmit)="addProduit()">
     <div class="col">
       <div class="col">
-        <input type="text" class="form-control" placeholder="Id" />
+        <input type="text" class="form-control" placeholder="Nom" formControlName="nom" />
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="Nom" />
+        <input type="number" class="form-control" placeholder="Prix" formControlName="prix" />
       </div>
       <div class="col">
-        <input type="number" class="form-control" placeholder="Prix" />
-      </div>
-      <div class="col">
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" formControlName="categorie">
           <option selected>Catégorie</option>
-          <option value="1">Électronique</option>
-          <option value="2">Meubles</option>
-          <option value="3">Livres</option>
+          <option value="Electronique">Électronique</option>
+          <option value="Meubles">Meubles</option>
+          <option value="livres">Livres</option>
         </select>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
-    <button type="reset" class="btn btn-primary">Annuler</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!produitForm.valid">Ajouter</button>
+    <button type="reset" class="btn btn-primary" (click)="closeModal()">Annuler</button>
   </form>
 </div>

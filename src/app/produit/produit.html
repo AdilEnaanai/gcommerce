@@ -9,13 +9,13 @@
     </tr>
   </thead>
   <tbody>
-    @for (produit of produits; track produit.id) {
-      <tr>
-        <th scope="row">{{ produit.id }}</th>
-        <td>{{ produit.nom }}</td>
-        <td>{{ produit.prix }}</td>
-        <td>{{ produit.categorie }}</td>
-      </tr>
-    }
+      @for (produit of (produits|async); track produit.id) {
+        <tr>
+          <th scope="row">{{ produit.id }}</th>
+          <td>{{ produit.nom }}</td>
+          <td>{{ produit.prix }}</td>
+          <td>{{ produit.categorie.nom }}</td>
+        </tr>
+      }
   </tbody>
 </table>

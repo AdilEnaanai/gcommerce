@@ -1,18 +1,20 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProduitService {
-  private produits = [
-    { id: 1, nom: 'Ordinateur', prix: 8000, categorie: 'Électronique' },
-    { id: 2, nom: 'Téléphone', prix: 5000, categorie: 'Électronique' },
-    { id: 3, nom: 'Table', prix: 2000, categorie: 'Meubles' },
-    { id: 4, nom: 'Chaise', prix: 1000, categorie: 'Meubles' },
-    { id: 5, nom: 'Livre', prix: 500, categorie: 'Livres' },
-  ];
-
+  http = inject(HttpClient);
+  baseUrl = 'http://localhost:8080/ventes/';
   getProduits() {
-    return this.produits;
+    return this.http.get(this.baseUrl+'produits?page=0&size=20');
+  }
+
+  addProduit(produit: any) {
+    const categorie=produit.categorie
+    delete produit.categorie
+    console.log(produit)
+    return this.http.post(this.baseUrl+'categories/'+categorie+'/produits', produit).subscribe();
   }
 }
